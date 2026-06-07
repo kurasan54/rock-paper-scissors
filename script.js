@@ -96,5 +96,21 @@ function displayWinner(){
     }
 }
 
-playRound();
+function playGame(){
+    for (let i = 0; i < 5; i++){
+        playRound();
+        console.log("Player score: " + playerScore + "  Computer Score: " + computerScore);
+    }
 
+    if (playerScore > computerScore){
+        console.log("You Win The Game!");
+    }
+    else if (playerScore === computerScore){
+        console.log("It's a TIE!");
+    }
+    else{
+        console.log("You Lost The Game!");
+    }
+}
+
+playGame();
