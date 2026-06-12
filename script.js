@@ -4,6 +4,14 @@ let computerScore = 0;
 let computerChoice = "";
 let computerChoiceID;
 
+const container = document.querySelector("#container");
+const rButton = document.createElement("button");
+
+rButton.textContent = "Rock";
+container.appendChild(rButton);
+
+rButton.addEventListener("click", () => getHumanChoice("rock"));
+
 function getComputerChoice(){
         let choice = Math.random() * 3;
         choice = Math.floor(choice);
@@ -24,29 +32,36 @@ function getComputerChoice(){
     }
 }
 
-let playerChoice = "";
+let playerChoiceName = "";
 let playerChoiceID;
-function getHumanChoice(){
-    playerChoice = prompt("Rock, Paper or Scissors?")
-    playerChoice = playerChoice.toLowerCase();
+function getHumanChoice(playerChoice){
+    //Old Prompt Code
+    // playerChoice = prompt("Rock, Paper or Scissors?")
+    // playerChoice = playerChoice.toLowerCase();
 
     switch (playerChoice){
         case "rock":
             playerChoiceID = 0;
+            playerChoiceName = "rock";
             break;
         case "paper":
             playerChoiceID = 1;
+            playerChoiceName = "paper";
             break;
         case "scissors":
+            playerChoiceName = "scissors";
             playerChoiceID = 2;
             break;
     }
+
+    playRound();
 }
 
 let whoWonMessage = "";
 let messageID = -1;
 function playRound(){
-    getHumanChoice();
+    //Since we are using buttons, we dont need to use this function in playRound;
+    // getHumanChoice();
     getComputerChoice();
 
     // 0 = tie
@@ -78,7 +93,7 @@ function playRound(){
 }
 
 function displayWinner(){
-    let playerMessage = playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1);
+    let playerMessage = playerChoiceName.charAt(0).toUpperCase() + playerChoiceName.slice(1);
     let computerMessage = computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1);
 
     // 0 = tie
@@ -97,10 +112,12 @@ function displayWinner(){
 }
 
 function playGame(){
-    for (let i = 0; i < 5; i++){
-        playRound();
-        console.log("Player score: " + playerScore + "  Computer Score: " + computerScore);
-    }
+
+    //5 Rounds Logic
+    // for (let i = 0; i < 5; i++){
+    //     playRound();
+    //     console.log("Player score: " + playerScore + "  Computer Score: " + computerScore);
+    // }
 
     if (playerScore > computerScore){
         console.log("You Win The Game!");
@@ -113,4 +130,4 @@ function playGame(){
     }
 }
 
-playGame();
+// playGame();
