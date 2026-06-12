@@ -47,6 +47,7 @@ function getHumanChoice(playerChoice){
     //Old Prompt Code
     // playerChoice = prompt("Rock, Paper or Scissors?")
     // playerChoice = playerChoice.toLowerCase();
+    if (roundCounter < 5){
 
     switch (playerChoice){
         case "rock":
@@ -64,6 +65,7 @@ function getHumanChoice(playerChoice){
     }
 
     playRound();
+}
 }
 
 let whoWonMessage = "";
@@ -117,7 +119,7 @@ function displayWinner(){
     // 1 = player wins
     // 2 = computer wins
 
-    createLine("Round " + (roundCounter + 1));
+    createLine("Round " + (roundCounter + "- " + "Player Score: " + playerScore + " Computer Score: " + computerScore));
     // console.log("Round " + (roundCounter + 1));
 
     switch (messageID){
@@ -134,38 +136,60 @@ function displayWinner(){
             // console.log("You lose! " + computerMessage + " beats " + playerMessage + "!");
     }
 
-    if (roundCounter >= 4)
+    if (roundCounter > 4)
     {
         if (playerScore > computerScore){
-        console.log("You Win The Game!");
+        createLine("You Win The Game!");
+        // console.log("You Win The Game!");
         }
         else if (playerScore === computerScore){
-        console.log("It's a TIE!");
+        createLine("It's a TIE!");
+        // console.log("It's a TIE!");
         }
         else{
-        console.log("You Lost The Game!");
+        createLine("You Lost The Game!");
+        // console.log("You Lost The Game!");
         }
     }  
     else{
         roundCounter++;
-    } 
+        console.log(roundCounter);
+
+        //If round 5 ended, use below to display the winner immediately.
+        if (roundCounter > 4)
+    {
+        if (playerScore > computerScore){
+        createLine("You Win The Game!");
+        // console.log("You Win The Game!");
+        }
+        else if (playerScore === computerScore){
+        createLine("It's a TIE!");
+        // console.log("It's a TIE!");
+        }
+        else{
+        createLine("You Lost The Game!");
+        // console.log("You Lost The Game!");
+        }
+    }  
+    }
+
 }
 
-function playGame(){
+// function playGame(){
 
-    //5 Rounds Logic
-    // for (let i = 0; i < 5; i++){
-    //     playRound();
-    //     console.log("Player score: " + playerScore + "  Computer Score: " + computerScore);
-    // }
+//     //5 Rounds Logic
+//     // for (let i = 0; i < 5; i++){
+//     //     playRound();
+//     //     console.log("Player score: " + playerScore + "  Computer Score: " + computerScore);
+//     // }
 
-    if (playerScore > computerScore){
-        console.log("You Win The Game!");
-    }
-    else if (playerScore === computerScore){
-        console.log("It's a TIE!");
-    }
-    else{
-        console.log("You Lost The Game!");
-    }
-}
+//     if (playerScore > computerScore){
+//         console.log("You Win The Game!");
+//     }
+//     else if (playerScore === computerScore){
+//         console.log("It's a TIE!");
+//     }
+//     else{
+//         console.log("You Lost The Game!");
+//     }
+// }
