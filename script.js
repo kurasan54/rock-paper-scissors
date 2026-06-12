@@ -8,6 +8,7 @@ const container = document.querySelector("#container");
 const rButton = document.createElement("button");
 const pButton = document.createElement("button");
 const sButton = document.createElement("button");
+const resultsContainer = document.querySelector("#results");
 
 rButton.textContent = "Rock";
 pButton.textContent = "Paper";
@@ -100,6 +101,12 @@ function playRound(){
     displayWinner();
 }
 
+function createLine(string){
+    const newLine = document.createElement("p");
+    newLine.textContent = string;
+    resultsContainer.appendChild(newLine);
+}
+
 let roundCounter = 0;
 
 function displayWinner(){
@@ -109,15 +116,22 @@ function displayWinner(){
     // 0 = tie
     // 1 = player wins
     // 2 = computer wins
+
+    createLine("Round " + (roundCounter + 1));
+    // console.log("Round " + (roundCounter + 1));
+
     switch (messageID){
         case 0:
-            console.log("It's a tie!");
+            createLine("Its a tie!");
+            // console.log("It's a tie!");
             break;
         case 1:
-            console.log("You win! " + playerMessage + " beats " + computerMessage + "!");
+            createLine("You win! " + playerMessage + " beats " + computerMessage + "!")
+            // console.log("You win! " + playerMessage + " beats " + computerMessage + "!");
             break;
         case 2:
-            console.log("You lose! " + computerMessage + " beats " + playerMessage + "!");
+            createLine("You lose! " + computerMessage + " beats " + playerMessage + "!")
+            // console.log("You lose! " + computerMessage + " beats " + playerMessage + "!");
     }
 
     if (roundCounter >= 4)
