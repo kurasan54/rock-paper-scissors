@@ -6,11 +6,19 @@ let computerChoiceID;
 
 const container = document.querySelector("#container");
 const rButton = document.createElement("button");
+const pButton = document.createElement("button");
+const sButton = document.createElement("button");
 
 rButton.textContent = "Rock";
+pButton.textContent = "Paper";
+sButton.textContent = "Scissors";
 container.appendChild(rButton);
+container.appendChild(pButton);
+container.appendChild(sButton);
 
 rButton.addEventListener("click", () => getHumanChoice("rock"));
+pButton.addEventListener("click", () => getHumanChoice("paper"));
+sButton.addEventListener("click", () => getHumanChoice("scissors"));
 
 function getComputerChoice(){
         let choice = Math.random() * 3;
@@ -92,6 +100,8 @@ function playRound(){
     displayWinner();
 }
 
+let roundCounter = 0;
+
 function displayWinner(){
     let playerMessage = playerChoiceName.charAt(0).toUpperCase() + playerChoiceName.slice(1);
     let computerMessage = computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1);
@@ -109,6 +119,22 @@ function displayWinner(){
         case 2:
             console.log("You lose! " + computerMessage + " beats " + playerMessage + "!");
     }
+
+    if (roundCounter >= 4)
+    {
+        if (playerScore > computerScore){
+        console.log("You Win The Game!");
+        }
+        else if (playerScore === computerScore){
+        console.log("It's a TIE!");
+        }
+        else{
+        console.log("You Lost The Game!");
+        }
+    }  
+    else{
+        roundCounter++;
+    } 
 }
 
 function playGame(){
@@ -129,5 +155,3 @@ function playGame(){
         console.log("You Lost The Game!");
     }
 }
-
-// playGame();
